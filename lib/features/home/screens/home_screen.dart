@@ -5,9 +5,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    var i = [1, 2, 3];
+
+    return Scaffold(
       body: Center(
-        child: Text("Flutter Starter Project, Starter Something new go on..."),
+        child: Text(
+            "Flutter Starter Project, Starter Something new go on... ${i[0]}"),
       ),
     );
   }

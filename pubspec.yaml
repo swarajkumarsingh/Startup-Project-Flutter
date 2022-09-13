@@ -18,8 +18,15 @@ dependencies:
 
   # GetX state-management
   get: ^4.6.5
+
+  # API requesting
   http: ^0.13.5
+
+  # Secondary API requesting
   dio: ^4.0.6
+
+  # onBoarding Screen
+  introduction_screen: ^3.0.2
 
 # Dev Dependencies
 dev_dependencies:

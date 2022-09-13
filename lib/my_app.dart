@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
+import 'package:get/get.dart';
+import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Starter Project',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
-      home: const HomeScreen(),
+      home: const OnBoardingPage(),
     );
   }
 }
