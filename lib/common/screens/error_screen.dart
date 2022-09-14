@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starter_project_flutter/constants/images.dart';
@@ -51,7 +53,7 @@ class ErrorScreen extends StatelessWidget {
                 height: 50,
                 width: 300,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(const HomeScreen()),
+                  onPressed: () => exit(0),
                   child: const Text(
                     "Reload page",
                     style: TextStyle(

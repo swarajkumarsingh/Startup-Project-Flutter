@@ -9,8 +9,6 @@ checkNet() {
   InternetConnectionChecker().onStatusChange.listen((event) {
     if (event == InternetConnectionStatus.disconnected) {
       Get.to(() => const NoInterNetScreen());
-    } else {
-      Get.to(() => const HomeScreen());
     }
   });
 }

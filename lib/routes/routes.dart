@@ -15,8 +15,8 @@ List<GetPage> getPages() {
       page: () => const NoInterNetScreen(),
     ),
     GetPage(
-      name: OnBoardingPage.routeName,
-      page: () => const OnBoardingPage(),
+      name: OnBoardingScreen.routeName,
+      page: () => const OnBoardingScreen(),
     ),
   ];
 }

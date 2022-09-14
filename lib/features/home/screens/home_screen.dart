@@ -7,11 +7,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var a = [1];
-    const bool wantError = true;
+    const bool wantRunTimeError = false;
     return Scaffold(
       body: Center(
         child: Text(
-          "Flutter Starter Project, Starter Something new go on... ${a[wantError == true ? 1 : 0]}}",
+          "Flutter Starter Project, Starter Something new go on... ${a[wantRunTimeError == true ? 1 : 0]}}",
         ),
       ),
     );
