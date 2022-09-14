@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:starter_project_flutter/common/screens/no_net_screen.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
+import 'package:starter_project_flutter/routes/routes.dart';
+import 'package:starter_project_flutter/routes/screen_bindings.dart';
 
 import 'package:starter_project_flutter/utils/utils.dart';
 
@@ -27,6 +28,8 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
+      getPages: getPages(),
+      initialBinding: ScreenBindings(),
       home: const HomeScreen(),
     );
   }

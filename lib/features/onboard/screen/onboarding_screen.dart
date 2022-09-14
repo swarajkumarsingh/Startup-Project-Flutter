@@ -6,6 +6,7 @@ import 'package:starter_project_flutter/features/onboard/widget/onboarding_scree
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 
 class OnBoardingPage extends StatelessWidget {
+  static const String routeName = "/on-boarding-screen";
   const OnBoardingPage({Key? key}) : super(key: key);
 
   @override

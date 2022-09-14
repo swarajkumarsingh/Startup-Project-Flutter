@@ -6,11 +6,11 @@ void main() {
   s();
 }
 
-void s(){
+void s() {
   ErrorWidget.builder = (FlutterErrorDetails details) {
     // Custom Page If error occurs
     FlutterError.presentError(details);
-    return CustomErrorScreen(
+    return ErrorScreen(
       errorMessage: details.exceptionAsString(),
     );
   };

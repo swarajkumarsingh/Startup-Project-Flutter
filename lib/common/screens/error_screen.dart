@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:starter_project_flutter/constants/images.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 
-class CustomErrorScreen extends StatelessWidget {
+class ErrorScreen extends StatelessWidget {
   final String errorMessage;
-  const CustomErrorScreen({
+  const ErrorScreen({
     Key? key,
     required this.errorMessage,
   }) : super(key: key);
@@ -20,7 +21,7 @@ class CustomErrorScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset("assets/images/error.png"),
+              Image.asset(errorImage),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -66,36 +67,3 @@ class CustomErrorScreen extends StatelessWidget {
     );
   }
 }
-// Scaffold(
-//       body: SafeArea(
-//         child: SingleChildScrollView(
-//           child: Center(
-//             child: Column(
-//               children: [
-//                 Text(
-//                   "Ops... Error Occurred",
-//                   style: TextStyle(
-//                       color: Theme.of(context).primaryColor,
-//                       fontWeight: FontWeight.bold,
-//                       fontSize: 25),
-//                 ),
-//                 Text(
-//                   errorMessage,
-//                   textAlign: TextAlign.center,
-//                   style: const TextStyle(),
-//                 ),
-//                 ElevatedButton(
-//                   onPressed: () => Navigator.push(context,
-//                       MaterialPageRoute(builder: (_) => const HomeScreen())),
-//                   child: const Text("Re-Try"),
-//                 ),
-//                 ElevatedButton(
-//                   onPressed: () => exit(0),
-//                   child: const Text("Exit App"),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );

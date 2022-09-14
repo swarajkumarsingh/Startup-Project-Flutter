@@ -1,9 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:starter_project_flutter/constants/images.dart';
 import 'package:starter_project_flutter/utils/utils.dart';
 
 class NoInterNetScreen extends StatelessWidget {
+  static const String routeName = "/no-net-screen";
   const NoInterNetScreen({Key? key}) : super(key: key);
 
   @override
@@ -17,7 +19,7 @@ class NoInterNetScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset("assets/images/noNet.webp"),
+            Image.asset(noNetImage),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
