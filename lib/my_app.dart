@@ -1,9 +1,23 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:starter_project_flutter/common/screens/no_net_screen.dart';
+import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 
-class MyApp extends StatelessWidget {
+import 'package:starter_project_flutter/utils/utils.dart';
+
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    checkNet();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const OnBoardingPage(),
+      home: const HomeScreen(),
     );
   }
 }
