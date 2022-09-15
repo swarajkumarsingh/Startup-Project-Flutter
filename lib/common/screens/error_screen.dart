@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:starter_project_flutter/constants/images.dart';
-import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 
 class ErrorScreen extends StatelessWidget {
   final String errorMessage;
@@ -55,7 +53,7 @@ class ErrorScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => exit(0),
                   child: const Text(
-                    "Reload page",
+                    "Close App",
                     style: TextStyle(
                       color: Colors.white,
                     ),
