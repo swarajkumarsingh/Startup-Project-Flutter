@@ -27,18 +27,27 @@ dependencies:
 
   # onBoarding Screen
   introduction_screen: ^3.0.2
+
+  # Real-Time internet checker
   internet_connection_checker: ^0.0.1+4
+
+  # Get-Storage
   get_storage: ^2.0.3
-  shared_preferences: ^2.0.15
 
 # Dev Dependencies
 dev_dependencies:
+
+  # Flutter SDK
   flutter_test:
     sdk: flutter
+
+  # FLutter Rules
   flutter_lints: ^2.0.0
   
+  # Flutter Splash Screen 
   flutter_native_splash: ^2.2.9
 
+# Splash Screen Config
 flutter_native_splash: 
   color: "#ffffff"
   image: assets/icons/appicon.png
@@ -50,4 +59,3 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/videos/
-  
