@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:starter_project_flutter/constants/variables.dart';
+import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
 import 'package:starter_project_flutter/routes/routes.dart';
 import 'package:starter_project_flutter/routes/screen_bindings.dart';
@@ -30,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       ),
       getPages: getPages(),
       initialBinding: ScreenBindings(),
-      home: const OnBoardingScreen(),
+      home: isNewUser != false ? const OnBoardingScreen() : const HomeScreen(),
     );
   }
 }

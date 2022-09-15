@@ -52,7 +52,11 @@ class NoInterNetScreen extends StatelessWidget {
                 onPressed: () async => await checkNetOnClick(),
                 child: const Text(
                   "Reload page",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

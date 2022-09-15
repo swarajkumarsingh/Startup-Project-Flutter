@@ -56,6 +56,8 @@ class ErrorScreen extends StatelessWidget {
                     "Close App",
                     style: TextStyle(
                       color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
