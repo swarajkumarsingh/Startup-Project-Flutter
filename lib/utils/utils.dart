@@ -20,10 +20,9 @@ checkNetOnClick() async {
   if (result == false) {
     Get.snackbar("No Network", "Please check your internet and try again.");
     return;
-  } else if(isNewUser == false) {
+  } else if (isNewUser == false) {
     Get.offAll(() => const HomeScreen());
-  }
-  else if(isNewUser == true) {
+  } else if (isNewUser == true) {
     Get.offAll(() => const OnBoardingScreen());
   }
   // else if(isLoggedIn == true) {
@@ -35,6 +34,33 @@ void showSnackBar(BuildContext context, String text) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Text(text),
+    ),
+  );
+}
+
+showErrorDialog({required String heading, required String description, VoidCallback? onPressed }) {
+  Get.dialog(
+    Dialog(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              heading,
+              style: Get.textTheme.headline4,
+            ),
+            Text(
+              description,
+              style: Get.textTheme.headline6,
+            ),
+            ElevatedButton(
+              onPressed: onPressed ?? () => Get.back(),
+              child: const Text('Okay'),
+            ),
+          ],
+        ),
+      ),
     ),
   );
 }
