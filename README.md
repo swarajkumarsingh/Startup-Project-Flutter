@@ -17,19 +17,30 @@ This is a wonderful starter-project repo, which follows the features folder stru
 - [x] Code splitting.
 - [ ] Changing onBoarding Screen(not using introduction screen )
 
-### 1. Install the following packages
-
-```
-flutter pub add getx http dio
-```
-
-### 2. Run pub get
+### 1. Run pub get (install packages)
 
 ```
 flutter pub get
 ```
 
 #### Folder Structure
+
+```yaml
+lib
+- common
+  - screens
+- constants
+  - theme
+- features
+  - home
+  - onBoard
+- routes
+- service
+- utils
+- main.dart
+- my_app.dart
+- my_main.dart
+```
 
 ```yaml
 lib
