@@ -1,5 +1,4 @@
 # Flutter-Starter-Project | Flutter
->>>>>>> bfa1a0021d0146738f870c673d0e8d34618fb0c0
 This is a wonderful starter-project repo, which follows the features folder structure, this project contains, theme folder, and also a working http error handler, which supports HTTP and DIO networking package, it also has onBoarding screen, with it's functionally eg:- is seen only for the ever-first time user opens the app, this has an real-time continuously network checking, and if user if not connected, it will show No Internet Screen, this repo also has an custom error screen for runtime errors in flutter instead of that ugly red yellow screen, and many more, this repo is powered by Getx for state-manage and get_storage for local work, this repo is properly structured, and is ready to use, you just need to install few packages
 
 ## Features
@@ -17,7 +16,6 @@ This is a wonderful starter-project repo, which follows the features folder stru
 - [x] Custom Flutter run-time error screen.
 - [x] Code splitting.
 - [ ] Changing onBoarding Screen(not using introduction screen )
->>>>>>> bfa1a0021d0146738f870c673d0e8d34618fb0c0
 
 ### 1. Run pub get (install packages)
 
