@@ -1,8 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:starter_project_flutter/constants/images.dart';
+
 import 'package:starter_project_flutter/utils/utils.dart';
+import 'package:starter_project_flutter/constants/images.dart';
 
 class NoInterNetScreen extends StatelessWidget {
   static const String routeName = "/no-net-screen";

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:starter_project_flutter/constants/images.dart';
-import 'package:starter_project_flutter/my_main.dart';
+import 'package:starter_project_flutter/utils/re_start_app_widget.dart';
 
 class ErrorScreen extends StatelessWidget {
   final String errorMessage;

@@ -6,16 +6,17 @@ Color kPrimaryColor = Colors.red;
 const Color kTextColor = Color(0xFF0D1333);
 const Color kBestSellerColor = Color(0xFFFFD073);
 const Color kGreenColor = Color(0xFF49CC96);
-const kPrimaryGradient = LinearGradient(
-  colors: [Color(0xFF46A0AE), Color(0xFF00FFCB)],
-  begin: Alignment.centerLeft,
-  end: Alignment.centerRight,
-);
 const Color darkText = Color(0xFF253840);
 const Color darkerText = Color(0xFF17262A);
 const Color lightText = Color(0xFF4A6572);
 const String fontName = 'WorkSans';
 
+// Gradients
+const kPrimaryGradient = LinearGradient(
+  colors: [Color(0xFF46A0AE), Color(0xFF00FFCB)],
+  begin: Alignment.centerLeft,
+  end: Alignment.centerRight,
+);
 
 
 // Custom Shadow

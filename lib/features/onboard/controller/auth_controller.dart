@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+
 import 'package:starter_project_flutter/constants/constants.dart';
+import 'package:starter_project_flutter/service/helper/dialog_helper.dart';
+import 'package:starter_project_flutter/service/services/base_client.dart';
+import 'package:starter_project_flutter/service/services/app_exceptions.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/service/controller/base_controller.dart';
-import 'package:starter_project_flutter/service/helper/dialog_helper.dart';
-import 'package:starter_project_flutter/service/services/app_exceptions.dart';
-import 'package:starter_project_flutter/service/services/base_client.dart';
 
 class AuthController extends GetxController with BaseController {
   var isDataLoading = false.obs;
@@ -18,9 +19,6 @@ class AuthController extends GetxController with BaseController {
         baseUrl,
         '/api/register',
         body,
-        {
-          'Content-Type': "application/json",
-        },
       ).catchError((error) {
         if (error is BadRequestException) {
           var apiError = json.decode(error.message!);
@@ -49,9 +47,6 @@ class AuthController extends GetxController with BaseController {
         baseUrl,
         '/api/register',
         body,
-        {
-          'Content-Type': "application/json",
-        },
       ).catchError((error) {
         if (error is BadRequestException) {
           var apiError = json.decode(error.message!);

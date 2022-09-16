@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:starter_project_flutter/service/controller/base_controller.dart';
+
 import 'package:starter_project_flutter/service/helper/dialog_helper.dart';
-import 'package:starter_project_flutter/service/services/app_exceptions.dart';
 import 'package:starter_project_flutter/service/services/base_client.dart';
+import 'package:starter_project_flutter/service/services/app_exceptions.dart';
+import 'package:starter_project_flutter/service/controller/base_controller.dart';
 
 class TestController extends GetxController with BaseController {
   void getData() async {
@@ -22,7 +23,7 @@ class TestController extends GetxController with BaseController {
     var response = await BaseClient().post(
         'https://jsonplaceholder.typicode.com',
         '/posts',
-        request, {}).catchError((error) {
+        request,).catchError((error) {
       if (error is BadRequestException) {
         var apiError = json.decode(error.message!);
         DialogHelper.showErrorDialog(description: apiError["reason"]);

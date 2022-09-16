@@ -1,6 +1,5 @@
 import 'package:starter_project_flutter/constants/constants.dart';
 
-
 // Local User data variables
 bool isLoggedIn = box.read("user-pic") != null ? true : false;
 String token = box.read('x-auth-token').toString();

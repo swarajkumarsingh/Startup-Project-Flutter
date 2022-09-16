@@ -1,13 +1,14 @@
 // ignore_for_file: constant_identifier_names
 
+import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+import 'app_exceptions.dart';
 
 import 'package:http/http.dart' as http;
+
 import 'package:starter_project_flutter/constants/constants.dart';
 import 'package:starter_project_flutter/utils/utils.dart';
-import 'app_exceptions.dart';
 
 class BaseClient {
   static const int TIME_OUT_DURATION = 8;
@@ -30,13 +31,17 @@ class BaseClient {
 
   //POST
   Future<dynamic> post(String baseUrl, String api, dynamic payloadObj,
-      Map<String, String> headers) async {
+      ) async {
     var uri = Uri.parse(baseUrl + api);
     var payload = json.encode(payloadObj);
     try {
-      var response = await http
-          .post(uri, body: payload, headers: headers)
-          .timeout(const Duration(seconds: TIME_OUT_DURATION));
+      var response = await http.post(
+        uri,
+        body: payload,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      ).timeout(const Duration(seconds: TIME_OUT_DURATION));
       return _processResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet connection', uri.toString());
@@ -77,9 +82,11 @@ class BaseClient {
         showErrorDialog(heading: "Error", description: errorMessage);
         return;
       default:
-        throw FetchDataException(
-            'Error occurred with code : ${response.statusCode}',
-            response.request!.url.toString());
+        showErrorDialog(
+          heading: "Error",
+          description: "Error occurred with code : ${response.statusCode}",
+        );
+        return;
     }
   }
 }

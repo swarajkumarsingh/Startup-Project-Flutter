@@ -3,11 +3,12 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:starter_project_flutter/common/widgets/custom_button.dart';
-import 'package:starter_project_flutter/features/onboard/controller/auth_controller.dart';
 
-import 'package:starter_project_flutter/features/onboard/controller/auth_controller_google.dart';
+import 'package:starter_project_flutter/constants/images.dart';
+import 'package:starter_project_flutter/common/widgets/custom_button.dart';
 import 'package:starter_project_flutter/features/onboard/widget/custom_textfield.dart';
+import 'package:starter_project_flutter/features/onboard/controller/auth_controller.dart';
+import 'package:starter_project_flutter/features/onboard/controller/auth_controller_google.dart';
 import 'package:starter_project_flutter/features/onboard/widget/onboarding_screen_button_widget.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -292,8 +293,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  Widget buildImage(String path) {
-    return Center(child: Image.network(path, width: 350));
+  Widget buildImage(String uri) {
+    return Center(
+      child: FadeInImage.assetNetwork(
+        placeholder: imageLoading,
+        image: uri,
+        width: 350,
+      ),
+    );
   }
 
   DotsDecorator getDotDecoration() {

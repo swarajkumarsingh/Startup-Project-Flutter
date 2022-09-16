@@ -1,8 +1,9 @@
+import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:starter_project_flutter/constants/constants.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
-import 'package:get/get.dart';
 import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
 
 class AuthControllerGoogle extends GetxController {
