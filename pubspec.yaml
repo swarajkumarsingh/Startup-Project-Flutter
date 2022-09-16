@@ -33,6 +33,10 @@ dependencies:
 
   # Get-Storage
   get_storage: ^2.0.3
+  firebase_auth: ^3.6.4
+  firebase_core: ^1.21.0
+  google_sign_in: ^5.4.1
+
 
 # Dev Dependencies
 dev_dependencies:

@@ -20,9 +20,11 @@ checkNetOnClick() async {
   if (result == false) {
     Get.snackbar("No Network", "Please check your internet and try again.");
     return;
-  } else if (isNewUser == false) {
+  } else if (isLoggedIn == true) {
     Get.offAll(() => const HomeScreen());
-  } else if (isNewUser == true) {
+  } else if (isLoggedIn == false) {
+    Get.offAll(() => const OnBoardingScreen());
+  } else {
     Get.offAll(() => const OnBoardingScreen());
   }
   // else if(isLoggedIn == true) {
@@ -38,7 +40,10 @@ void showSnackBar(BuildContext context, String text) {
   );
 }
 
-showErrorDialog({required String heading, required String description, VoidCallback? onPressed }) {
+void showErrorDialog(
+    {required String heading,
+    required String description,
+    VoidCallback? onPressed}) {
   Get.dialog(
     Dialog(
       child: Padding(

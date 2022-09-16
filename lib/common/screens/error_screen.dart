@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:starter_project_flutter/constants/images.dart';
+import 'package:starter_project_flutter/my_main.dart';
 
 class ErrorScreen extends StatelessWidget {
   final String errorMessage;
@@ -12,6 +13,7 @@ class ErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    RestartWidget.restartApp(context);
     return Scaffold(
       body: SafeArea(
         child: Container(

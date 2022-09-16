@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     checkNet();
+    debugPrint("App Re-build");
   }
 
   @override
@@ -32,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       ),
       getPages: getPages(),
       initialBinding: ScreenBindings(),
-      home: isNewUser != false ? const OnBoardingScreen() : const HomeScreen(),
+      home: isLoggedIn ? const HomeScreen() : const OnBoardingScreen(),
     );
   }
 }
