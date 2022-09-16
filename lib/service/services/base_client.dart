@@ -5,13 +5,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
+import 'package:starter_project_flutter/constants/constants.dart';
+import 'package:starter_project_flutter/utils/utils.dart';
 import 'app_exceptions.dart';
 
 class BaseClient {
   static const int TIME_OUT_DURATION = 8;
   //GET
-  Future<dynamic> get(
-      String baseUrl, String api, [Map<String, String>? headers]) async {
+  Future<dynamic> get(String baseUrl, String api,
+      [Map<String, String>? headers]) async {
     var uri = Uri.parse(baseUrl + api);
     try {
       var response = await http
@@ -27,7 +29,8 @@ class BaseClient {
   }
 
   //POST
-  Future<dynamic> post(String baseUrl, String api, dynamic payloadObj, Map<String, String> headers) async {
+  Future<dynamic> post(String baseUrl, String api, dynamic payloadObj,
+      Map<String, String> headers) async {
     var uri = Uri.parse(baseUrl + api);
     var payload = json.encode(payloadObj);
     try {
@@ -47,6 +50,10 @@ class BaseClient {
   //OTHER
 
   dynamic _processResponse(http.Response response) {
+    final res = jsonDecode(response.body);
+
+    final errorMessage = res[errorKeyword];
+
     switch (response.statusCode) {
       case 200:
         var responseJson = utf8.decode(response.bodyBytes);
@@ -55,16 +62,20 @@ class BaseClient {
         var responseJson = utf8.decode(response.bodyBytes);
         return responseJson;
       case 400:
-        throw BadRequestException(
-            utf8.decode(response.bodyBytes), response.request!.url.toString());
+        showErrorDialog(heading: "Error", description: errorMessage);
+        return;
       case 401:
+        showErrorDialog(heading: "Error", description: errorMessage);
+        return;
       case 403:
-        throw UnAuthorizedException(
-            utf8.decode(response.bodyBytes), response.request!.url.toString());
+        showErrorDialog(heading: "Error", description: errorMessage);
+        return;
       case 422:
-        throw BadRequestException(
-            utf8.decode(response.bodyBytes), response.request!.url.toString());
+        showErrorDialog(heading: "Error", description: errorMessage);
+        return;
       case 500:
+        showErrorDialog(heading: "Error", description: errorMessage);
+        return;
       default:
         throw FetchDataException(
             'Error occurred with code : ${response.statusCode}',

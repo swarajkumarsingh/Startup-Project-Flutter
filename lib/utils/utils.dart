@@ -49,15 +49,18 @@ void showErrorDialog(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               heading,
               style: Get.textTheme.headline4,
+              textAlign: TextAlign.center,
             ),
             Text(
               description,
               style: Get.textTheme.headline6,
+              textAlign: TextAlign.center,
             ),
             ElevatedButton(
               onPressed: onPressed ?? () => Get.back(),

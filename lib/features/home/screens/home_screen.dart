@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:starter_project_flutter/constants/variables.dart';
-import 'package:starter_project_flutter/features/onboard/controller/auth_controller.dart';
+import 'package:starter_project_flutter/features/onboard/controller/auth_controller_google.dart';
 import 'package:starter_project_flutter/my_main.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  AuthController controller = Get.put(AuthController());
+  AuthControllerGoogle controller = Get.put(AuthControllerGoogle());
 
   @override
   void dispose() {

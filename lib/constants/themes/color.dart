@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// Global Color Variables
+const Color kTextFieldColor = Color.fromRGBO(243, 240, 240, 1);
 Color kPrimaryColor = Colors.red;
 const Color kTextColor = Color(0xFF0D1333);
 const Color kBestSellerColor = Color(0xFFFFD073);
@@ -13,6 +15,8 @@ const Color darkText = Color(0xFF253840);
 const Color darkerText = Color(0xFF17262A);
 const Color lightText = Color(0xFF4A6572);
 const String fontName = 'WorkSans';
+
+
 
 // Custom Shadow
 List<BoxShadow> customShadow = [
