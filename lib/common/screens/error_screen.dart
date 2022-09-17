@@ -1,15 +1,29 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:restart_app/restart_app.dart';
 import 'package:starter_project_flutter/constants/images.dart';
 import 'package:starter_project_flutter/utils/re_start_app_widget.dart';
 
-class ErrorScreen extends StatelessWidget {
+class ErrorScreen extends StatefulWidget {
   final String errorMessage;
   const ErrorScreen({
     Key? key,
     required this.errorMessage,
   }) : super(key: key);
+
+  @override
+  State<ErrorScreen> createState() => _ErrorScreenState();
+}
+
+class _ErrorScreenState extends State<ErrorScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+        Restart.restartApp();
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +54,7 @@ class ErrorScreen extends StatelessWidget {
                     height: 20,
                   ),
                   Text(
-                    "Ops.. it's seems that $errorMessage",
+                    "Ops.. it's seems that ${widget.errorMessage}",
                     textAlign: TextAlign.center,
                     softWrap: true,
                     maxLines: 2,

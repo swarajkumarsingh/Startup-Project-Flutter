@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
 class RestartWidget extends StatefulWidget {
-  const RestartWidget({Key? key, required this.child}) : super(key: key);
+  const RestartWidget({Key? key, this.child}) : super(key: key);
 
-  final Widget child;
+  final Widget? child;
 
   static void restartApp(BuildContext context) {
-    context.findAncestorStateOfType<RestartWidgetState>()!.restartApp();
+    context.findAncestorStateOfType<_RestartWidgetState>()?.restartApp();
   }
 
   @override
-  RestartWidgetState createState() => RestartWidgetState();
+  State<StatefulWidget> createState() {
+    return _RestartWidgetState();
+  }
 }
 
-class RestartWidgetState extends State<RestartWidget> {
+class _RestartWidgetState extends State<RestartWidget> {
   Key key = UniqueKey();
 
   void restartApp() {
@@ -26,7 +28,7 @@ class RestartWidgetState extends State<RestartWidget> {
   Widget build(BuildContext context) {
     return KeyedSubtree(
       key: key,
-      child: widget.child,
+      child: widget.child ?? Container(),
     );
   }
 }

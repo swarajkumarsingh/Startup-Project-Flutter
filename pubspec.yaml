@@ -46,6 +46,10 @@ dependencies:
   # Email Validator
   email_validator: ^2.1.17
 
+  # 
+  carousel_slider: ^4.1.1
+  restart_app: ^1.1.0+1
+
 
 # Dev Dependencies
 dev_dependencies:
