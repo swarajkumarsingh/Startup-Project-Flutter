@@ -42,6 +42,8 @@ dependencies:
 
   # Google SignIn
   google_sign_in: ^5.4.1
+
+  # Email Validator
   email_validator: ^2.1.17
 
 
