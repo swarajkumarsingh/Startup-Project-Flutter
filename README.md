@@ -1,5 +1,5 @@
-# Flutter-Starter-Project | Flutter
-This is a wonderful starter-project repo, which follows the features folder structure, this project contains, theme folder, and also a working http error handler, which supports HTTP and DIO networking package, it also has onBoarding screen, with it's functionally eg:- is seen only for the ever-first time user opens the app, this has an real-time continuously network checking, and if user if not connected, it will show No Internet Screen, this repo also has an custom error screen for runtime errors in flutter instead of that ugly red yellow screen,this project has firebase setup(change google-services.json file), this repo also has Firebase Google Auth with state persistence, this repo also have Backend Auth support, and many more, this repo is powered by Getx for state-manage and Get_storage for local work, this repo is properly structured, and is ready to use, you just need to install few packages.
+# Starter-Project | Flutter
+This is a wonderful starter-project repo, which have all the features listed below, GETX for state-management & Get_Storage for local storage. 
 
 ## Features
 - [x] Follows the **Features** folder structure.

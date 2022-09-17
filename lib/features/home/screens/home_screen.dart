@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:starter_project_flutter/constants/images.dart';
 import 'package:starter_project_flutter/constants/variables.dart';
 import 'package:starter_project_flutter/utils/re_start_app_widget.dart';
-import 'package:starter_project_flutter/features/onboard/controller/auth_controller_google.dart';
+import 'package:starter_project_flutter/features/onboard/repositery/auth_controller_google.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home-screen";

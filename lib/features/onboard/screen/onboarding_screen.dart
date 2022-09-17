@@ -8,7 +8,7 @@ import 'package:starter_project_flutter/constants/images.dart';
 import 'package:starter_project_flutter/common/widgets/custom_button.dart';
 import 'package:starter_project_flutter/common/widgets/custom_textfields.dart';
 import 'package:starter_project_flutter/features/onboard/controller/auth_controller.dart';
-import 'package:starter_project_flutter/features/onboard/controller/auth_controller_google.dart';
+import 'package:starter_project_flutter/features/onboard/repositery/auth_controller_google.dart';
 import 'package:starter_project_flutter/features/onboard/widget/onboarding_screen_button_widget.dart';
 
 class OnBoardingScreen extends StatefulWidget {
