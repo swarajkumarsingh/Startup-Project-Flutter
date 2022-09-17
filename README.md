@@ -19,12 +19,11 @@ This is a wonderful starter-project repo, which have all the features listed bel
 - [x] Implemented Firebase Google SignIn with state persistence.
 - [x] Implemented Backend API login and register feature UI and controller.
 - [x] On runtime error App Re-Start feature
-- [x] App Types of email Validation(name, email, password)
+- [x] App Types of email Validation (name, email, password)
+- [x] Carrousel Slider
 - [ ] Custom ListView and GridView
 - [ ] Custom Box from ListView and GridView
-- [ ] Carrousel Slider
 - [ ] Search Screen
-- [ ] Changing onBoarding Screen( not using introduction screen )
 
 ## Installation
 
