@@ -29,8 +29,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   TextEditingController passwordController = TextEditingController();
 
   // Form Keys
+  final formKeyName = GlobalKey<FormState>();
   final formKeyEmail = GlobalKey<FormState>();
-  final formKeyNumber = GlobalKey<FormState>();
   final formKeyPassword = GlobalKey<FormState>();
 
   AuthControllerGoogle controller = Get.put(AuthControllerGoogle());
@@ -43,6 +43,28 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  registerFunc() async {
+    if (formKeyName.currentState!.validate() == false &&
+        formKeyPassword.currentState!.validate() == false &&
+        formKeyPassword.currentState!.validate() == false) {
+      return;
+    }
+    nController.register(
+      name: nameController.text,
+      email: emailController.text,
+      password: passwordController.text,
+    );
+  }
+
+  loginFunc() async {
+    if (formKeyEmail.currentState!.validate() == false &&
+        formKeyPassword.currentState!.validate() == false) {
+      return;
+    }
+    nController.login(
+        email: emailController.text, password: passwordController.text);
   }
 
   @override
@@ -71,138 +93,140 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               'https://media.istockphoto.com/vectors/happy-young-employees-giving-support-and-help-each-other-vector-id1218490893?k=20&m=1218490893&s=612x612&w=0&h=svJxkZEFiciFHufK4LNn13TpNip1cVPW9Ig0Ahuugqs='),
           decoration: getPageDecoration(),
         ),
-        currentState == SCREEN_STATE.LOGIN_STATE
-            ? PageViewModel(
-                titleWidget: Text(
-                  "Login to Welcome 😀",
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
-                ),
-                bodyWidget: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 10),
-                      Form(
-                        key: formKeyEmail,
-                        child: CustomTextField(
-                          text: "Enter your email",
-                          controller: emailController,
-                          textInputType: TextInputType.emailAddress,
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Form(
-                        key: formKeyPassword,
-                        child: CustomTextField(
-                          text: "Enter your password",
-                          controller: passwordController,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      CustomButton(
-                          text: "Login",
-                          onPressed: () {
-                            nController.login(
-                                email: emailController.text,
-                                password: passwordController.text);
-                          }),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Don't have an account "),
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                currentState = SCREEN_STATE.REGISTER_STATE;
-                              });
-                            },
-                            child: Text(
-                              "register",
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                image: buildImage(
-                    'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
-                decoration: getPageDecoration(),
-              )
-            : PageViewModel(
-                titleWidget: Text(
-                  "Login to Welcome 😀",
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
-                ),
-                bodyWidget: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CustomTextField(
-                        text: "Enter your Name",
-                        controller: nameController,
-                      ),
-                      const SizedBox(height: 10),
-                      CustomTextField(
-                        text: "Enter your email",
-                        controller: emailController,
-                      ),
-                      const SizedBox(height: 10),
-                      CustomTextField(
-                        text: "Enter your password",
-                        controller: passwordController,
-                      ),
-                      const SizedBox(height: 20),
-                      CustomButton(
-                          text: "Register",
-                          onPressed: () {
-                            nController.register(
-                              name: nameController.text,
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
-                          }),
-                      const SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Already Have an account "),
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                currentState = SCREEN_STATE.LOGIN_STATE;
-                              });
-                            },
-                            child: Text(
-                              "login",
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                image: buildImage(
-                    'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
-                decoration: getPageDecoration(),
+        if (currentState == SCREEN_STATE.LOGIN_STATE)
+          PageViewModel(
+            titleWidget: Text(
+              "Login to Welcome 😀",
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
               ),
+            ),
+            bodyWidget: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 10),
+                  Form(
+                    key: formKeyEmail,
+                    child: EmailTextField(
+                      text: "Enter your email",
+                      controller: emailController,
+                      textInputType: TextInputType.emailAddress,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Form(
+                    key: formKeyPassword,
+                    child: PasswordTextField(
+                      text: "Enter your password",
+                      controller: passwordController,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  CustomButton(
+                    text: "Login",
+                    onPressed: loginFunc,
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have an account "),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            currentState = SCREEN_STATE.REGISTER_STATE;
+                          });
+                        },
+                        child: Text(
+                          "register",
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            image: buildImage(
+                'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
+            decoration: getPageDecoration(),
+          )
+        else
+          PageViewModel(
+            titleWidget: Text(
+              "Login to Welcome 😀",
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
+            bodyWidget: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Form(
+                    key: formKeyName,
+                    child: NameTextField(
+                      text: "Enter your Name",
+                      controller: nameController,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Form(
+                    key: formKeyEmail,
+                    child: EmailTextField(
+                      text: "Enter your email",
+                      controller: emailController,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Form(
+                    key: formKeyPassword,
+                    child: PasswordTextField(
+                      text: "Enter your password",
+                      controller: passwordController,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  CustomButton(
+                    text: "Register",
+                    onPressed: registerFunc,
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Already Have an account "),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            currentState = SCREEN_STATE.LOGIN_STATE;
+                          });
+                        },
+                        child: Text(
+                          "login",
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            image: buildImage(
+                'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
+            decoration: getPageDecoration(),
+          ),
         PageViewModel(
           title: 'Today a reader, tomorrow a leader',
           body: 'Start your journey',
@@ -253,8 +277,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       ),
     );
   }
-
-
 
   DotsDecorator getDotDecoration() {
     return DotsDecorator(
