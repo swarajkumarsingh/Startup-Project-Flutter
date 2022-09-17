@@ -10,7 +10,7 @@ class CustomTextField extends StatelessWidget {
     Key? key,
     required this.text,
     this.textInputType = TextInputType.name,
-    required this.controller,
+    required this.controller, 
   }) : super(key: key);
 
   final double height = 40;
@@ -24,6 +24,7 @@ class CustomTextField extends StatelessWidget {
         key: formKey,
         child: TextFormField(
           // validator: (value) {},
+          
           controller: controller,
           keyboardType: textInputType,
           decoration: InputDecoration(

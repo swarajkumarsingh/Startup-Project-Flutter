@@ -28,6 +28,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  // Form Keys
+  final formKeyEmail = GlobalKey<FormState>();
+  final formKeyNumber = GlobalKey<FormState>();
+  final formKeyPassword = GlobalKey<FormState>();
+
   AuthControllerGoogle controller = Get.put(AuthControllerGoogle());
   AuthController nController = Get.put(AuthController());
 
@@ -53,6 +58,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
                   decoration: getPageDecoration(),
                 ),
+                
+                PageViewModel(
+                  title: 'Featured Books',
+                  body: 'Available right at your fingerprints',
+                  image: buildImage(
+                      'https://img.freepik.com/free-vector/business-team-brainstorm-idea-lightbulb-from-jigsaw-working-team-collaboration-enterprise-cooperation-colleagues-mutual-assistance-concept-pinkish-coral-bluevector-isolated-illustration_335657-1651.jpg?w=2000'),
+                  decoration: getPageDecoration(),
+                ),
+                PageViewModel(
+                  title: 'Simple UI',
+                  body: 'For enhanced reading experience',
+                  image: buildImage(
+                      'https://media.istockphoto.com/vectors/happy-young-employees-giving-support-and-help-each-other-vector-id1218490893?k=20&m=1218490893&s=612x612&w=0&h=svJxkZEFiciFHufK4LNn13TpNip1cVPW9Ig0Ahuugqs='),
+                  decoration: getPageDecoration(),
+                ),
                 PageViewModel(
                   titleWidget: Text(
                     "Login to Welcome 😀",
@@ -67,14 +87,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: 10),
-                        CustomTextField(
-                          text: "Enter your email",
-                          controller: emailController,
+                        Form(
+                          key: formKeyEmail,
+                          child: CustomTextField(
+                            text: "Enter your email",
+                            controller: emailController,
+                            textInputType: TextInputType.emailAddress,
+                          ),
                         ),
                         const SizedBox(height: 10),
-                        CustomTextField(
-                          text: "Enter your password",
-                          controller: passwordController,
+                        Form(
+                          key: formKeyPassword,
+                          child: CustomTextField(
+                            text: "Enter your password",
+                            controller: passwordController,
+                          ),
                         ),
                         const SizedBox(height: 20),
                         CustomButton(
@@ -110,20 +137,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                   image: buildImage(
                       'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
-                  decoration: getPageDecoration(),
-                ),
-                PageViewModel(
-                  title: 'Featured Books',
-                  body: 'Available right at your fingerprints',
-                  image: buildImage(
-                      'https://imaginovation.net/static/b35d3ed9e922415df7c292561d572891/3fcdd/10631-Importance-of-Web-App-1.webp'),
-                  decoration: getPageDecoration(),
-                ),
-                PageViewModel(
-                  title: 'Simple UI',
-                  body: 'For enhanced reading experience',
-                  image: buildImage(
-                      'https://media.istockphoto.com/vectors/happy-young-employees-giving-support-and-help-each-other-vector-id1218490893?k=20&m=1218490893&s=612x612&w=0&h=svJxkZEFiciFHufK4LNn13TpNip1cVPW9Ig0Ahuugqs='),
                   decoration: getPageDecoration(),
                 ),
                 PageViewModel(
@@ -171,6 +184,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   body: 'The man who never reads lives only one.',
                   image: buildImage(
                       'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
+                  decoration: getPageDecoration(),
+                ),
+                PageViewModel(
+                  title: 'Featured Books',
+                  body: 'Available right at your fingerprints',
+                  image: buildImage(
+                      'https://img.freepik.com/free-vector/business-team-brainstorm-idea-lightbulb-from-jigsaw-working-team-collaboration-enterprise-cooperation-colleagues-mutual-assistance-concept-pinkish-coral-bluevector-isolated-illustration_335657-1651.jpg?w=2000'),
+                  decoration: getPageDecoration(),
+                ),
+                PageViewModel(
+                  title: 'Simple UI',
+                  body: 'For enhanced reading experience',
+                  image: buildImage(
+                      'https://media.istockphoto.com/vectors/happy-young-employees-giving-support-and-help-each-other-vector-id1218490893?k=20&m=1218490893&s=612x612&w=0&h=svJxkZEFiciFHufK4LNn13TpNip1cVPW9Ig0Ahuugqs='),
                   decoration: getPageDecoration(),
                 ),
                 PageViewModel(
@@ -239,20 +266,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   decoration: getPageDecoration(),
                 ),
                 PageViewModel(
-                  title: 'Featured Books',
-                  body: 'Available right at your fingerprints',
-                  image: buildImage(
-                      'https://imaginovation.net/static/b35d3ed9e922415df7c292561d572891/3fcdd/10631-Importance-of-Web-App-1.webp'),
-                  decoration: getPageDecoration(),
-                ),
-                PageViewModel(
-                  title: 'Simple UI',
-                  body: 'For enhanced reading experience',
-                  image: buildImage(
-                      'https://media.istockphoto.com/vectors/happy-young-employees-giving-support-and-help-each-other-vector-id1218490893?k=20&m=1218490893&s=612x612&w=0&h=svJxkZEFiciFHufK4LNn13TpNip1cVPW9Ig0Ahuugqs='),
-                  decoration: getPageDecoration(),
-                ),
-                PageViewModel(
                   title: 'Today a reader, tomorrow a leader',
                   body: 'Start your journey',
                   footer: OnBoardingSCreenButtonWidget(
@@ -297,6 +310,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Center(
       child: FadeInImage.assetNetwork(
         placeholder: imageLoading,
+        placeholderCacheHeight: 100,
         image: uri,
         width: 350,
       ),
