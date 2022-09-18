@@ -3,6 +3,7 @@ const String noNetImage = "assets/images/noNet.webp";
 const String pageNotFoundImage = "assets/images/404.png";
 const String errorImage = "assets/images/error.png";
 const String imageLoading = "assets/gif/imageLoading.gif";
+const String imageLoad = "assets/gif/imageLoad.png";
 
 final List urlImages = [
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4nO90kwKUTXcmaQZXSKbsRT7UzjbTVuF39w&usqp=CAU",

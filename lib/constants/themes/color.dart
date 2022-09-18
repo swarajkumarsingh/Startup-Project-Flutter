@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 // Global Color Variables
 const Color kTextFieldColor = Color.fromRGBO(243, 240, 240, 1);
-Color kPrimaryColor = Colors.red;
+const Color kPrimaryColor = Color.fromRGBO(31, 201, 195, 1);
+const Color kStarColor = Color.fromRGBO(180, 107, 14, 1);
 const Color kTextColor = Color(0xFF0D1333);
 const Color kBestSellerColor = Color(0xFFFFD073);
 const Color kGreenColor = Color(0xFF49CC96);

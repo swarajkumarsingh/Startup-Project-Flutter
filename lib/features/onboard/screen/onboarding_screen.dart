@@ -52,6 +52,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     nController.dispose();
   }
 
+  // Register Button Function
   registerFunc() async {
     if (formKeyName.currentState!.validate() == false &&
         formKeyPassword.currentState!.validate() == false &&
@@ -65,6 +66,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
+  // Login Button Function
   loginFunc() async {
     if (formKeyEmail.currentState!.validate() == false &&
         formKeyPassword.currentState!.validate() == false) {

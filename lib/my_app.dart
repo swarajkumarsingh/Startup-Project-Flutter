@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:starter_project_flutter/constants/themes/color.dart';
 import 'package:starter_project_flutter/constants/variables.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
@@ -29,7 +30,16 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Starter Project',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        colorScheme: const ColorScheme.light(
+          primary: kPrimaryColor,
+        ),
+        appBarTheme: const AppBarTheme(
+          color: kPrimaryColor,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        ),
       ),
       getPages: getPages(),
       initialBinding: ScreenBindings(),
