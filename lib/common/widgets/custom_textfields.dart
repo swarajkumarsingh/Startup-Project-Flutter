@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart';
 
 import 'package:starter_project_flutter/constants/themes/color.dart';
 
@@ -128,9 +127,21 @@ class EmailTextField extends StatelessWidget {
         controller: controller,
         keyboardType: textInputType,
         autofillHints: const [AutofillHints.email],
-        validator: (email) => email != null && !EmailValidator.validate(email)
-            ? 'Enter a valid email'
-            : null,
+        validator: (value) {
+          if (value!.isNotEmpty &&
+              value.contains("@") &&
+              value.contains(".com")) {
+            return null;
+          } else if (value.isEmpty) {
+            return "Please enter an email";
+          } else if (value.contains("@") == false) {
+            return "Enter a valid Email";
+          } else if (value.contains(".com") == false) {
+            return "Enter a valid Email";
+          } else {
+            return "Please Enter a valid Number";
+          }
+        },
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.email_outlined),
           border: InputBorder.none,
