@@ -76,6 +76,38 @@ class NameTextField extends StatelessWidget {
   }
 }
 
+class SearchTextField extends StatelessWidget {
+  final String text;
+  final TextInputType textInputType;
+  final TextEditingController controller;
+  const SearchTextField({
+    Key? key,
+    required this.text,
+    this.textInputType = TextInputType.name,
+    required this.controller,
+  }) : super(key: key);
+
+  final double height = 40;
+  final int nameMinLength = 3;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: TextFormField(
+        controller: controller,
+        keyboardType: textInputType,
+        decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.search),
+          border: InputBorder.none,
+          hintText: text,
+          fillColor: kTextFieldColor,
+          filled: true,
+        ),
+      ),
+    );
+  }
+}
+
 class EmailTextField extends StatelessWidget {
   final String text;
   final TextInputType textInputType;
@@ -174,7 +206,7 @@ class PhoneNumberTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         keyboardType: textInputType,
-         validator: (value) {
+        validator: (value) {
           if (value!.isNotEmpty && value.length == 10) {
             return null;
           } else if (value.isEmpty) {
