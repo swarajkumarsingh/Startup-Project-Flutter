@@ -29,12 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> arr = [
-      "Popular Course",
-      "Designing Course",
-      "Trending Course",
-      "Hot & New Course",
-    ];
+
 
     return Scaffold(
       backgroundColor: Colors.white,

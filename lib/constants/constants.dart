@@ -13,3 +13,11 @@ const String errorKeyword = "error";
 
 // Global Box variable
 final box = GetStorage();
+
+// GridView Builder local data
+List<String> arr = [
+  "Popular Course",
+  "Designing Course",
+  "Trending Course",
+  "Hot & New Course",
+];
