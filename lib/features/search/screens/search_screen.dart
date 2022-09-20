@@ -5,6 +5,7 @@ import 'package:starter_project_flutter/constants/constants.dart';
 import 'package:starter_project_flutter/features/search/widgets/list_view_card.dart';
 
 class SearchScreen extends StatelessWidget {
+  static const String routeName = "/search-screen";
   const SearchScreen({Key? key}) : super(key: key);
 
   @override

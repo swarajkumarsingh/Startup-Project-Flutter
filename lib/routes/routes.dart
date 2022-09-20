@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:starter_project_flutter/common/screens/no_net_screen.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
+import 'package:starter_project_flutter/features/search/screens/search_screen.dart';
 
 List<GetPage> getPages() {
   return [
@@ -17,6 +18,10 @@ List<GetPage> getPages() {
     GetPage(
       name: OnBoardingScreen.routeName,
       page: () => const OnBoardingScreen(),
+    ),
+    GetPage(
+      name: SearchScreen.routeName,
+      page: () => const SearchScreen(),
     ),
   ];
 }
