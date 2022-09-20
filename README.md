@@ -23,7 +23,7 @@ This is a wonderful starter-project repo, which have all the features listed bel
 - [x] Carrousel Slider
 - [x] Custom ListView and GridView
 - [x] Custom Box from ListView and GridView
-- [ ] Search Screen
+- [x] Search Screen
 
 ## Installation
 
