@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text("Amazon Clone"),
         actions: [
           IconButton(
-            onPressed: () => controller.logout(),
+            onPressed: () {},
             icon: const Icon(
               Icons.search_rounded,
               color: Colors.white,

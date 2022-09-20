@@ -56,6 +56,11 @@ class GridViewCard extends StatelessWidget {
           const SizedBox(height: 5),
           Row(
             children: const [
+              Icon(
+                Icons.star,
+                size: 20,
+                color: Colors.amber,
+              ),
               Text(
                 "4.4",
                 maxLines: 1,
@@ -82,7 +87,7 @@ class GridViewCard extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           const Text(
-            "3,399",
+            " ₹ 3,399",
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             softWrap: true,
