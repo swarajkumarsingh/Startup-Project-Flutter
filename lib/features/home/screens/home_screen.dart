@@ -25,6 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
     controller.dispose();
   }
 
+  void navigateToSearchScreen() => Get.toNamed(SearchScreen.routeName);
+
   @override
   Widget build(BuildContext context) {
     List<String> arr = [
@@ -45,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: () => Get.to(const SearchScreen()),
+            onPressed: navigateToSearchScreen,
             icon: const Icon(
               Icons.search_rounded,
               color: Colors.black,

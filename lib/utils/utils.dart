@@ -10,7 +10,7 @@ import 'package:starter_project_flutter/features/onboard/screen/onboarding_scree
 checkNet() {
   InternetConnectionChecker().onStatusChange.listen((event) {
     if (event == InternetConnectionStatus.disconnected) {
-      Get.to(() => const NoInterNetScreen());
+      Get.toNamed(NoInterNetScreen.routeName);
     }
   });
 }
@@ -27,9 +27,6 @@ checkNetOnClick() async {
   } else {
     Get.offAll(() => const OnBoardingScreen());
   }
-  // else if(isLoggedIn == true) {
-  //   Get.offAll(() => const LoginScreen());
-  // }
 }
 
 void showSnackBar(BuildContext context, String text) {
