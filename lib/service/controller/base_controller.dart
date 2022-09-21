@@ -1,5 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:dio/dio.dart';
+
 import 'package:starter_project_flutter/service/helper/dialog_helper.dart';
 import 'package:starter_project_flutter/service/services/app_exceptions.dart';
 

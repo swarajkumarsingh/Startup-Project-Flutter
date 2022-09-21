@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+
 import 'package:starter_project_flutter/constants/themes/color.dart';
 import 'package:starter_project_flutter/constants/variables.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
 import 'package:starter_project_flutter/routes/routes.dart';
 import 'package:starter_project_flutter/routes/screen_bindings.dart';
-
 import 'package:starter_project_flutter/utils/utils.dart';
 
 class MyApp extends StatefulWidget {

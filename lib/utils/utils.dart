@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
+import 'package:starter_project_flutter/constants/variables.dart';
 import 'package:starter_project_flutter/common/screens/no_net_screen.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:starter_project_flutter/constants/variables.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
 

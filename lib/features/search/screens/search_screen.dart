@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:starter_project_flutter/common/widgets/custom_textfields.dart';
+import 'package:flutter/material.dart';
+
+import 'package:starter_project_flutter/utils/utils.dart';
 import 'package:starter_project_flutter/constants/constants.dart';
 import 'package:starter_project_flutter/features/search/widgets/list_view_card.dart';
-import 'package:starter_project_flutter/utils/utils.dart';
+import 'package:starter_project_flutter/common/widgets/custom_textfields.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = "/search-screen";

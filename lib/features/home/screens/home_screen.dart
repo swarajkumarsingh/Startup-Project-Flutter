@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:starter_project_flutter/constants/constants.dart';
 
-import 'package:starter_project_flutter/constants/images.dart';
-import 'package:starter_project_flutter/features/home/widgets/popular_item_grid_builder.dart';
-import 'package:starter_project_flutter/features/search/screens/search_screen.dart';
-import 'package:starter_project_flutter/utils/carousel_slider.dart';
-import 'package:starter_project_flutter/features/onboard/repository/auth_controller_google.dart';
 import 'package:starter_project_flutter/utils/utils.dart';
+import 'package:starter_project_flutter/constants/images.dart';
+import 'package:starter_project_flutter/constants/constants.dart';
+import 'package:starter_project_flutter/utils/carousel_slider.dart';
+import 'package:starter_project_flutter/features/search/screens/search_screen.dart';
+import 'package:starter_project_flutter/features/home/widgets/popular_item_grid_builder.dart';
+import 'package:starter_project_flutter/features/onboard/repository/auth_controller_google.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home-screen";
