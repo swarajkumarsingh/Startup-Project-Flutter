@@ -1,5 +1,7 @@
-# Starter-Project | Flutter
-This is a wonderful starter-project repo, which have all the features listed below, GETX for state-management & Get_Storage for local storage. 
+# StartUp-Project | Flutter
+## **Start your next startup within a week**
+
+- Repo powered by **GETX**
 
 ## Features
 - [x] Follows the **Features** folder structure.
