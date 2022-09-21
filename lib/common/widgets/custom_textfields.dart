@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:email_validator/email_validator.dart';
 
 import 'package:starter_project_flutter/constants/themes/color.dart';
 
@@ -76,6 +75,38 @@ class NameTextField extends StatelessWidget {
   }
 }
 
+class SearchTextField extends StatelessWidget {
+  final String text;
+  final TextInputType textInputType;
+  final TextEditingController controller;
+  const SearchTextField({
+    Key? key,
+    required this.text,
+    this.textInputType = TextInputType.name,
+    required this.controller,
+  }) : super(key: key);
+
+  final double height = 40;
+  final int nameMinLength = 3;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: TextFormField(
+        controller: controller,
+        keyboardType: textInputType,
+        decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.search),
+          border: InputBorder.none,
+          hintText: text,
+          fillColor: kTextFieldColor,
+          filled: true,
+        ),
+      ),
+    );
+  }
+}
+
 class EmailTextField extends StatelessWidget {
   final String text;
   final TextInputType textInputType;
@@ -96,9 +127,21 @@ class EmailTextField extends StatelessWidget {
         controller: controller,
         keyboardType: textInputType,
         autofillHints: const [AutofillHints.email],
-        validator: (email) => email != null && !EmailValidator.validate(email)
-            ? 'Enter a valid email'
-            : null,
+        validator: (value) {
+          if (value!.isNotEmpty &&
+              value.contains("@") &&
+              value.contains(".com")) {
+            return null;
+          } else if (value.isEmpty) {
+            return "Please enter an email";
+          } else if (value.contains("@") == false) {
+            return "Enter a valid Email";
+          } else if (value.contains(".com") == false) {
+            return "Enter a valid Email";
+          } else {
+            return "Please Enter a valid Number";
+          }
+        },
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.email_outlined),
           border: InputBorder.none,
@@ -174,7 +217,7 @@ class PhoneNumberTextField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         keyboardType: textInputType,
-         validator: (value) {
+        validator: (value) {
           if (value!.isNotEmpty && value.length == 10) {
             return null;
           } else if (value.isEmpty) {

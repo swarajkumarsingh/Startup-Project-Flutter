@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:starter_project_flutter/constants/constants.dart';
 
 import 'package:starter_project_flutter/constants/images.dart';
-import 'package:starter_project_flutter/constants/variables.dart';
+import 'package:starter_project_flutter/features/home/widgets/popular_item_grid_builder.dart';
+import 'package:starter_project_flutter/features/search/screens/search_screen.dart';
 import 'package:starter_project_flutter/utils/carousel_slider.dart';
-import 'package:starter_project_flutter/utils/re_start_app_widget.dart';
 import 'package:starter_project_flutter/features/onboard/repository/auth_controller_google.dart';
+import 'package:starter_project_flutter/utils/utils.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home-screen";
@@ -16,12 +18,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  AuthControllerGoogle controller = Get.put(AuthControllerGoogle());
+
+
   @override
   void initState() {
     super.initState();
+    checkUserData();
   }
 
-  AuthControllerGoogle controller = Get.put(AuthControllerGoogle());
 
   @override
   void dispose() {
@@ -29,42 +34,57 @@ class _HomeScreenState extends State<HomeScreen> {
     controller.dispose();
   }
 
-  bool wantRunTimeError = false;
+  void navigateToSearchScreen() {
+    Get.to(() => const SearchScreen(), transition: Transition.zoom);
+  }
+
   @override
   Widget build(BuildContext context) {
-    var a = [1];
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text(
+          "Amazon Clone",
+          style: TextStyle(color: Colors.black),
+        ),
         actions: [
           IconButton(
+            onPressed: navigateToSearchScreen,
+            icon: const Icon(
+              Icons.search_rounded,
+              color: Colors.black,
+            ),
+          ),
+          IconButton(
             onPressed: () => controller.logout(),
-            icon: const Icon(Icons.logout_rounded),
+            icon: const Icon(
+              Icons.logout_rounded,
+              color: Colors.black,
+            ),
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: ListView(
         children: [
-          CustomCarouselSlider(list: urlImages),
-          FadeInImage.assetNetwork(placeholder: imageLoading, image: userPic),
-          Center(
-            child: InkWell(
-              onTap: () {
-                setState(() {
-                  wantRunTimeError = true;
-                });
-              },
-              child: Text(
-                "Flutter Starter Project, Starter Something new go on... ${a[wantRunTimeError == true ? 1 : 0]}}",
+          SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.all(kDefaultPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomCarouselSlider(list: urlImages),
+                  ...arr.map(
+                    (e) {
+                      return PopularItemsGridView(
+                        title: e.toString(),
+                      );
+                    },
+                  ).toList()
+                ],
               ),
             ),
-          ),
-          TextButton(
-            onPressed: () {
-              RestartWidget.restartApp(context);
-            },
-            child: const Text("Re start App"),
           ),
         ],
       ),

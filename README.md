@@ -1,5 +1,7 @@
-# Starter-Project | Flutter
-This is a wonderful starter-project repo, which have all the features listed below, GETX for state-management & Get_Storage for local storage. 
+# StartUp-Project | Flutter
+## **Start your next startup within a week**
+
+- Repo powered by **GETX**
 
 ## Features
 - [x] Follows the **Features** folder structure.
@@ -21,9 +23,9 @@ This is a wonderful starter-project repo, which have all the features listed bel
 - [x] On runtime error App Re-Start feature
 - [x] App Types of email Validation (name, email, password)
 - [x] Carrousel Slider
-- [ ] Custom ListView and GridView
-- [ ] Custom Box from ListView and GridView
-- [ ] Search Screen
+- [x] Custom ListView and GridView
+- [x] Custom Box from ListView and GridView
+- [x] Search Screen
 
 ## Installation
 
@@ -52,6 +54,16 @@ lib
 - main.dart
 - my_app.dart
 ```
+
+
+## **Download Starter Project APK [here!](https://drive.google.com/file/d/1Gm_x9DeBz6JUejkAAIk6D2xfitXjYuOU/view?usp=sharing)**
+
+## Screenshots
+
+|  |  |  |
+| :---:  | :---:  | :---:  |
+| ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771660/github%20images/sahnpmr56y2kshjugnfn.jpg) | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771660/github%20images/xnro9ownte0f7s8p5e8a.jpg) | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771659/github%20images/wuwwp2kqk9wjshkopepp.jpg) 
+| ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771659/github%20images/ilel8ixqeuaxnbuyjfp1.jpg) | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771659/github%20images/govpyu70mtvvlro9n6jj.jpg) | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771659/github%20images/krxzcejj6wg5y7juh4yg.jpg) 
 
 
 ## 🚀 About Me

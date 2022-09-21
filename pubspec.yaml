@@ -22,7 +22,7 @@ dependencies:
   # API requesting
   http: ^0.13.5
 
-  # Secondary API requesting
+  # Secondary API requesting (TEMP)
   dio: ^4.0.6
 
   # onBoarding Screen
@@ -43,11 +43,10 @@ dependencies:
   # Google SignIn
   google_sign_in: ^5.4.1
 
-  # Email Validator
-  email_validator: ^2.1.17
-
-  # 
+  # App Carousel
   carousel_slider: ^4.1.1
+
+  # App Re-Starter
   restart_app: ^1.1.0+1
 
 

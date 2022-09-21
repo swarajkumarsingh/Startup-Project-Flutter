@@ -86,7 +86,7 @@ class AuthControllerGoogle extends GetxController {
       isLoading(true);
       googleAccount.value = await googleSignIn.signOut();
       box.erase();
-      Get.to(const OnBoardingScreen());
+      Get.offAll(() => const OnBoardingScreen());
       Get.snackbar("Login", "LogOut Successful");
     } catch (e) {
       Get.snackbar("Login", "LogOut Failed, Try again");
