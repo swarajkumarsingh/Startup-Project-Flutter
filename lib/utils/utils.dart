@@ -15,6 +15,15 @@ checkNet() {
   });
 }
 
+checkUserData() {
+  if (isLoggedIn) {
+    debugPrint("User log check successfully");
+    return;
+  } else {
+    Get.offAll(() => const OnBoardingScreen());
+  }
+}
+
 checkNetOnClick() async {
   bool result = await InternetConnectionChecker().hasConnection;
   if (result == false) {
