@@ -25,12 +25,12 @@ class _HomeScreenState extends State<HomeScreen> {
     controller.dispose();
   }
 
-  void navigateToSearchScreen() => Get.toNamed(SearchScreen.routeName);
+  void navigateToSearchScreen() {
+    Get.to(() => const SearchScreen(), transition: Transition.zoom);
+  }
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

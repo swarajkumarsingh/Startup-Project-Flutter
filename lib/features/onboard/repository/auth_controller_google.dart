@@ -14,8 +14,6 @@ class AuthControllerGoogle extends GetxController {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
 
-  
-
   login() async {
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -88,7 +86,7 @@ class AuthControllerGoogle extends GetxController {
       isLoading(true);
       googleAccount.value = await googleSignIn.signOut();
       box.erase();
-      Get.toNamed(OnBoardingScreen.routeName);
+      Get.offAll(() => const OnBoardingScreen());
       Get.snackbar("Login", "LogOut Successful");
     } catch (e) {
       Get.snackbar("Login", "LogOut Failed, Try again");
