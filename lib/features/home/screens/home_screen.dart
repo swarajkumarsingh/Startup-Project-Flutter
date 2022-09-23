@@ -20,13 +20,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   AuthControllerGoogle controller = Get.put(AuthControllerGoogle());
 
-
   @override
   void initState() {
     super.initState();
     checkUserData();
   }
-
 
   @override
   void dispose() {
@@ -46,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
-          "Amazon Clone",
+          "StartUp Project",
           style: TextStyle(color: Colors.black),
         ),
         actions: [
