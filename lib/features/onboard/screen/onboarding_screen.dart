@@ -47,7 +47,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    controller.dispose();
     nController.dispose();
   }
 

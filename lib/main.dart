@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:restart_app/restart_app.dart';
@@ -11,6 +13,8 @@ main() {
 }
 
 void init() async {
+  HttpOverrides.global = MyHttpOverrides();
+
   WidgetsFlutterBinding.ensureInitialized();
 
   // Re Start App when error occurs.
@@ -32,4 +36,11 @@ void init() async {
       child: MyApp(),
     ),
   );
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)..maxConnectionsPerHost = 10;
+  }
 }

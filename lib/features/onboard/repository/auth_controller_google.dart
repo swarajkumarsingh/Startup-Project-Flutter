@@ -61,9 +61,7 @@ class AuthControllerGoogle extends GetxController {
 
             // Show snackBar is user is logged in.
             Get.snackbar("Login", "Login");
-            Get.offAllNamed(
-              HomeScreen.routeName,
-            );
+            Get.offAll(const HomeScreen());
           } catch (e) {
             Get.snackbar("Error", "Unable to store data");
           } finally {
