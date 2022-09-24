@@ -63,7 +63,7 @@ class AuthControllerGoogle extends GetxController {
 
             // Show snackBar is user is logged in.
             Get.snackbar("Login", "Login");
-            Get.offAll(const HomeScreen());
+            Get.offAll(() => const HomeScreen());
           } catch (error, stackTrace) {
             errorTracker.captureError(error, stackTrace);
             if (isDebugMode) printError(info: error.toString());

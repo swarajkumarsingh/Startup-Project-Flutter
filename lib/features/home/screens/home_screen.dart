@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:starter_project_flutter/config.dart';
 
-import 'package:starter_project_flutter/utils/utils.dart';
 import 'package:starter_project_flutter/constants/images.dart';
 import 'package:starter_project_flutter/constants/constants.dart';
 import 'package:starter_project_flutter/utils/carousel_slider.dart';
@@ -23,11 +23,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    checkUserData();
+    // checkUserData();
   }
 
   void navigateToSearchScreen() {
-    Get.to(() => const SearchScreen(), transition: Transition.zoom);
+    Get.to(() => const SearchScreen(), transition: Transition.fadeIn);
   }
 
   @override
@@ -39,9 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         title: GestureDetector(
           onTap: () => throw Exception(),
-          child: const Text(
-            "StartUp Project",
-            style: TextStyle(color: Colors.black),
+          child: Text(
+            AppConfig.applicationName,
+            style: const TextStyle(color: Colors.black),
           ),
         ),
         actions: [

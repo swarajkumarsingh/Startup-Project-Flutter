@@ -20,16 +20,16 @@ void init() async {
       WidgetsFlutterBinding.ensureInitialized();
       HttpOverrides.global = MyHttpOverrides();
 
-      /// [Init Firebase]
+      /// Init Firebase
       await Firebase.initializeApp();
 
-      /// [Report Crash to FirebaseCrashlytics]
-      if (!isDebugMode) {
+      /// Report Crash to FirebaseCrashlytics
+      if (isDebugMode == false) {
         FlutterError.onError =
             FirebaseCrashlytics.instance.recordFlutterFatalError;
       }
 
-      /// [Send error which are not captured by flutter & report to firebase]
+      /// Send error which are not captured by flutter & report to firebase
       Isolate.current.addErrorListener(RawReceivePort((pair) async {
         final List<dynamic> errorAndStacktrace = pair;
         await FirebaseCrashlytics.instance.recordError(
@@ -39,17 +39,17 @@ void init() async {
         );
       }).sendPort);
 
-      /// [Re Start App when error occurs.]
+      /// Re Start App when error occurs.
       ErrorWidget.builder = (FlutterErrorDetails details) {
         FlutterError.presentError(details);
         Restart.restartApp();
         return Container();
       };
 
-      /// [Init GetStorage]
+      /// Init GetStorage
       await GetStorage.init();
 
-      /// [Run App after all checks]
+      /// Run App after all checks
       runApp(
         const RestartWidget(
           child: MyApp(),

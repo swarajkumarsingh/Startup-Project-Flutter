@@ -210,7 +210,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
               ],
-            )
+            ),
+
+            /// *** Loader
+            Obx(() => controller.isLoading.value ? const Loader() : Container())
           ],
         ),
       ),
@@ -277,7 +280,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
               ],
             ),
-            const Loader()
+
+            /// *** Loader
+            Obx(() => controller.isLoading.value ? const Loader() : Container())
           ],
         ),
       ),

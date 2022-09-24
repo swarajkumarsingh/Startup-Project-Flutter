@@ -20,13 +20,14 @@ class _SearchScreenState extends State<SearchScreen> {
     super.initState();
     checkUserData();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Colors.white,
         leading: IconButton(
           onPressed: () => Get.back(),
