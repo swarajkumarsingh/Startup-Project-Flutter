@@ -26,12 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
     checkUserData();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
-
   void navigateToSearchScreen() {
     Get.to(() => const SearchScreen(), transition: Transition.zoom);
   }
@@ -43,9 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        title: const Text(
-          "StartUp Project",
-          style: TextStyle(color: Colors.black),
+        title: GestureDetector(
+          onTap: () => throw Exception(),
+          child: const Text(
+            "StartUp Project",
+            style: TextStyle(color: Colors.black),
+          ),
         ),
         actions: [
           IconButton(

@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:starter_project_flutter/config.dart';
 
 import 'package:starter_project_flutter/constants/constants.dart';
+import 'package:starter_project_flutter/error_tracker/error_tracker.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
 
@@ -21,7 +23,7 @@ class AuthControllerGoogle extends GetxController {
       // Show Loading
       isLoading(true);
 
-      // this line if for the google signIn popup
+      // This line if for the google signIn popup
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
 
@@ -62,7 +64,9 @@ class AuthControllerGoogle extends GetxController {
             // Show snackBar is user is logged in.
             Get.snackbar("Login", "Login");
             Get.offAll(const HomeScreen());
-          } catch (e) {
+          } catch (error, stackTrace) {
+            errorTracker.captureError(error, stackTrace);
+            if (isDebugMode) printError(info: error.toString());
             Get.snackbar("Error", "Unable to store data");
           } finally {
             isLoading(false);
@@ -72,8 +76,10 @@ class AuthControllerGoogle extends GetxController {
           Get.snackbar("Login", "Login Failed, try again later.");
         }
       }
-    } catch (e) {
-      Get.snackbar("Login Failed", e.toString());
+    } catch (error, stackTrace) {
+      errorTracker.captureError(error, stackTrace);
+      if (isDebugMode) printError(info: error.toString());
+      Get.snackbar("Login Failed", "Something went wrong, Try again.");
     } finally {
       isLoading(false);
     }
@@ -86,7 +92,9 @@ class AuthControllerGoogle extends GetxController {
       box.erase();
       Get.offAll(() => const OnBoardingScreen());
       Get.snackbar("Login", "LogOut Successful");
-    } catch (e) {
+    } on Exception catch (error, stackTrace) {
+      errorTracker.captureError(error, stackTrace);
+      if (isDebugMode) printError(info: error.toString());
       Get.snackbar("Login", "LogOut Failed, Try again");
     } finally {
       isLoading(false);

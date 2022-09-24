@@ -40,6 +40,9 @@ dependencies:
   # Firebase Auth
   firebase_auth: ^3.6.4
 
+  # Firebase Crashlytics
+  firebase_crashlytics: ^2.8.11
+
   # Google SignIn
   google_sign_in: ^5.4.1
 

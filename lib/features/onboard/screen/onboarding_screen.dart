@@ -3,6 +3,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:starter_project_flutter/common/widgets/loader.dart';
 
 import 'package:starter_project_flutter/constants/images.dart';
 import 'package:starter_project_flutter/common/widgets/custom_button.dart';
@@ -275,7 +276,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ),
               ],
-            )
+            ),
+            const Loader()
           ],
         ),
       ),

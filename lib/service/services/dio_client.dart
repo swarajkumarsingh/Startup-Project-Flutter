@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names, avoid_print
+// ignore_for_file: constant_identifier_names, avoid_print, unused_element
 
 import 'dart:async';
 import 'dart:convert';
@@ -19,7 +19,7 @@ class DioClient {
           BaseOptions(
             connectTimeout: 5000,
             receiveTimeout: 5000,
-            baseUrl: "https://some-website.com",
+            baseUrl: baseUrl
           ),
         );
       }

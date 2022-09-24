@@ -11,6 +11,7 @@ class OnBoardingSCreenButtonWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  // ignore: deprecated_member_use
   Widget build(BuildContext context) => RaisedButton(
         onPressed: onClicked,
         color: Theme.of(context).primaryColor,

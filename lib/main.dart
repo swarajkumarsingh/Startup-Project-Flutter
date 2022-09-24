@@ -1,40 +1,63 @@
+import 'dart:async';
 import 'dart:io';
+import 'dart:isolate';
 
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:restart_app/restart_app.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:starter_project_flutter/config.dart';
 
 import 'package:starter_project_flutter/my_app.dart';
 import 'package:starter_project_flutter/utils/re_start_app_widget.dart';
 
-main() {
-  init();
-}
+main() => init();
 
 void init() async {
-  HttpOverrides.global = MyHttpOverrides();
+  runZonedGuarded<Future<void>>(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      HttpOverrides.global = MyHttpOverrides();
 
-  WidgetsFlutterBinding.ensureInitialized();
+      /// [Init Firebase]
+      await Firebase.initializeApp();
 
-  // Re Start App when error occurs.
-  ErrorWidget.builder = (FlutterErrorDetails details) {
-    FlutterError.presentError(details);
-    Restart.restartApp();
-    return Container();
-  };
+      /// [Report Crash to FirebaseCrashlytics]
+      if (!isDebugMode) {
+        FlutterError.onError =
+            FirebaseCrashlytics.instance.recordFlutterFatalError;
+      }
 
-  // Init Firebase
-  await Firebase.initializeApp();
+      /// [Send error which are not captured by flutter & report to firebase]
+      Isolate.current.addErrorListener(RawReceivePort((pair) async {
+        final List<dynamic> errorAndStacktrace = pair;
+        await FirebaseCrashlytics.instance.recordError(
+          errorAndStacktrace.first,
+          errorAndStacktrace.last,
+          fatal: true,
+        );
+      }).sendPort);
 
-  // Init GetStorage
-  await GetStorage.init();
+      /// [Re Start App when error occurs.]
+      ErrorWidget.builder = (FlutterErrorDetails details) {
+        FlutterError.presentError(details);
+        Restart.restartApp();
+        return Container();
+      };
 
-  // Run App after all checks
-  runApp(
-    const RestartWidget(
-      child: MyApp(),
-    ),
+      /// [Init GetStorage]
+      await GetStorage.init();
+
+      /// [Run App after all checks]
+      runApp(
+        const RestartWidget(
+          child: MyApp(),
+        ),
+      );
+    },
+    (error, stack) =>
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true),
   );
 }
 
