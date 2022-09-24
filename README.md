@@ -56,7 +56,7 @@ lib
 ```
 
 
-## **Download Starter Project APK [here!](https://drive.google.com/file/d/1Gm_x9DeBz6JUejkAAIk6D2xfitXjYuOU/view?usp=sharing)**
+## **Download Starter Project APK [here!](https://drive.google.com/file/d/1kX9c7XqN2i2FxIGIyMweoNAUIMxd_W-Z/view?usp=sharing)**
 
 ## Screenshots
 
