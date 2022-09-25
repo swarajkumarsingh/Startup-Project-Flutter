@@ -83,7 +83,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           pages: [
             PageViewModel(
               title: 'A reader lives a thousand lives',
-              body: 'The man who never reads lives only one.',
+              // body: 'The man who never reads lives only one.',
+              bodyWidget: const Loader(),
               image: buildImage(
                   'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
               decoration: getPageDecoration(),
@@ -108,10 +109,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               registerPageView(context),
             PageViewModel(
               title: 'Today a reader, tomorrow a leader',
-              body: 'Start your journey',
-              footer: OnBoardingSCreenButtonWidget(
-                text: 'Login',
-                onClicked: () => controller.login(),
+              // body: 'Start your journey',
+              bodyWidget: Column(
+                children: [
+                  OnBoardingSCreenButtonWidget(
+                    text: 'Login',
+                    onClicked: () => controller.login(),
+                  ),
+                  Obx(() =>
+                      controller.isLoading.value ? const Loader() : Container())
+                ],
               ),
               image: buildImage(
                   'https://miro.medium.com/max/512/1*GaBtlHe240ZkwlcBrFczgQ.jpeg'),
@@ -213,7 +220,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ),
 
             /// *** Loader
-            Obx(() => controller.isLoading.value ? const Loader() : Container())
+            Obx(() =>
+                nController.isLoading.value ? const Loader() : Container())
+            // const Loader()
           ],
         ),
       ),
@@ -282,7 +291,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ),
 
             /// *** Loader
-            Obx(() => controller.isLoading.value ? const Loader() : Container())
+            Obx(() =>
+                nController.isLoading.value ? const Loader() : Container())
           ],
         ),
       ),

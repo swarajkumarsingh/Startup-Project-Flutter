@@ -12,11 +12,12 @@ import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/service/controller/base_controller.dart';
 
 class AuthController extends GetxController with BaseController {
-  var isDataLoading = false.obs;
+  var isLoading = false.obs;
 
   void login({required String email, required String password}) async {
     try {
       var body = {"email": email.toString(), "password": password.toString()};
+
       var response = await BaseClient()
           .post(
         baseUrl,

@@ -68,10 +68,7 @@ class AuthControllerGoogle extends GetxController {
             errorTracker.captureError(error, stackTrace);
             if (isDebugMode) printError(info: error.toString());
             Get.snackbar("Error", "Unable to store data");
-          } finally {
-            isLoading(false);
-          }
-          isLoading(false);
+          } 
         } else {
           Get.snackbar("Login", "Login Failed, try again later.");
         }
@@ -92,7 +89,7 @@ class AuthControllerGoogle extends GetxController {
       box.erase();
       Get.offAll(() => const OnBoardingScreen());
       Get.snackbar("Login", "LogOut Successful");
-    } on Exception catch (error, stackTrace) {
+    } catch (error, stackTrace) {
       errorTracker.captureError(error, stackTrace);
       if (isDebugMode) printError(info: error.toString());
       Get.snackbar("Login", "LogOut Failed, Try again");

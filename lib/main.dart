@@ -15,50 +15,54 @@ import 'package:starter_project_flutter/utils/re_start_app_widget.dart';
 main() => init();
 
 void init() async {
-  runZonedGuarded<Future<void>>(
-    () async {
-      WidgetsFlutterBinding.ensureInitialized();
-      HttpOverrides.global = MyHttpOverrides();
+  runZonedGuarded<Future<void>>(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    HttpOverrides.global = MyHttpOverrides();
 
-      /// Init Firebase
-      await Firebase.initializeApp();
+    /// Init Firebase
+    await Firebase.initializeApp();
 
-      /// Report Crash to FirebaseCrashlytics
+    /// Report Crash to FirebaseCrashlytics
+    if (isDebugMode == false) {
+      FlutterError.onError =
+          FirebaseCrashlytics.instance.recordFlutterFatalError;
+    }
+
+    /// Send error which are not captured by flutter & report to firebase
+    Isolate.current.addErrorListener(RawReceivePort((pair) async {
+      final List<dynamic> errorAndStacktrace = pair;
       if (isDebugMode == false) {
-        FlutterError.onError =
-            FirebaseCrashlytics.instance.recordFlutterFatalError;
-      }
-
-      /// Send error which are not captured by flutter & report to firebase
-      Isolate.current.addErrorListener(RawReceivePort((pair) async {
-        final List<dynamic> errorAndStacktrace = pair;
         await FirebaseCrashlytics.instance.recordError(
           errorAndStacktrace.first,
           errorAndStacktrace.last,
           fatal: true,
         );
-      }).sendPort);
+      }
+      if (isDebugMode) Restart.restartApp();
+    }).sendPort);
 
-      /// Re Start App when error occurs.
-      ErrorWidget.builder = (FlutterErrorDetails details) {
-        FlutterError.presentError(details);
-        Restart.restartApp();
-        return Container();
-      };
+    /// Re Start App when error occurs.
+    ErrorWidget.builder = (FlutterErrorDetails details) {
+      FlutterError.presentError(details);
+      if (isDebugMode) Restart.restartApp();
+      return Container();
+    };
 
-      /// Init GetStorage
-      await GetStorage.init();
+    /// Init GetStorage
+    await GetStorage.init();
 
-      /// Run App after all checks
-      runApp(
-        const RestartWidget(
-          child: MyApp(),
-        ),
-      );
-    },
-    (error, stack) =>
-        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true),
-  );
+    /// Run App after all checks
+    runApp(
+      const RestartWidget(
+        child: MyApp(),
+      ),
+    );
+  }, (error, stack) {
+    if (isDebugMode == false) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    }
+    if (isDebugMode) Restart.restartApp();
+  });
 }
 
 class MyHttpOverrides extends HttpOverrides {
