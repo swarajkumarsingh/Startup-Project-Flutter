@@ -26,10 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
     // checkUserData();
   }
 
-  void navigateToSearchScreen() {
-    Get.to(() => const SearchScreen(), transition: Transition.fadeIn);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            onPressed: navigateToSearchScreen,
+            onPressed: () {
+              Get.to(() => const SearchScreen(), transition: Transition.fade);
+            },
             icon: const Icon(
               Icons.search_rounded,
               color: Colors.black,

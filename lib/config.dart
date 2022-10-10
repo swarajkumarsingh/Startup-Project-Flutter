@@ -4,4 +4,4 @@ class AppConfig {
   static String packageNameIOS = "com.dev.flutter-starterProject";
 }
 
-bool isDebugMode = true;
+bool isDebugMode = false;

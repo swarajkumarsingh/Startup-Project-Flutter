@@ -3,7 +3,6 @@
 import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
-import 'app_exceptions.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -22,16 +21,21 @@ class BaseClient {
           .timeout(const Duration(seconds: TIME_OUT_DURATION));
       return _processResponse(response);
     } on SocketException {
-      throw FetchDataException('No Internet connection', uri.toString());
+      showErrorDialog(heading: "Error", description: "No Internet connection");
     } on TimeoutException {
-      throw ApiNotRespondingException(
-          'API not responded in time', uri.toString());
+      showErrorDialog(
+        heading: "Error",
+        description: "API not responded in time",
+      );
     }
   }
 
   //POST
-  Future<dynamic> post(String baseUrl, String api, dynamic payloadObj,
-      ) async {
+  Future<dynamic> post(
+    String baseUrl,
+    String api,
+    dynamic payloadObj,
+  ) async {
     var uri = Uri.parse(baseUrl + api);
     var payload = json.encode(payloadObj);
     try {
@@ -44,15 +48,17 @@ class BaseClient {
       ).timeout(const Duration(seconds: TIME_OUT_DURATION));
       return _processResponse(response);
     } on SocketException {
-      throw FetchDataException('No Internet connection', uri.toString());
+      showErrorDialog(heading: "Error", description: "No Internet connection");
     } on TimeoutException {
-      throw ApiNotRespondingException(
-          'API not responded in time', uri.toString());
+      showErrorDialog(
+        heading: "Error",
+        description: "API not responded in time",
+      );
     }
   }
 
   //DELETE
-  //OTHER
+  //PUT
 
   dynamic _processResponse(http.Response response) {
     final res = jsonDecode(response.body);

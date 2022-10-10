@@ -3,9 +3,9 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:starter_project_flutter/common/widgets/loader.dart';
 
 import 'package:starter_project_flutter/constants/images.dart';
+import 'package:starter_project_flutter/common/widgets/loader.dart';
 import 'package:starter_project_flutter/common/widgets/custom_button.dart';
 import 'package:starter_project_flutter/common/widgets/custom_textfields.dart';
 import 'package:starter_project_flutter/features/onboard/controller/auth_controller.dart';
@@ -83,8 +83,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           pages: [
             PageViewModel(
               title: 'A reader lives a thousand lives',
-              // body: 'The man who never reads lives only one.',
-              bodyWidget: const Loader(),
+              body: 'The man who never reads lives only one.',
               image: buildImage(
                   'https://www.pyramidions.com/blog/wp-content/uploads/2020/04/technology-stack-for-web-application-main.jpg'),
               decoration: getPageDecoration(),

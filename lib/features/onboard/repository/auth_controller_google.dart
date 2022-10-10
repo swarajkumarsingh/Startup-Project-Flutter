@@ -51,7 +51,7 @@ class AuthControllerGoogle extends GetxController {
           final String userId =
               result.additionalUserInfo!.profile!["id"].toString();
 
-          // saving user info
+          // try saving user info
           try {
             box.write('x-auth-token', tokenToSave);
             box.write('user-access-token', userAccessToken);
@@ -67,7 +67,7 @@ class AuthControllerGoogle extends GetxController {
           } catch (error, stackTrace) {
             errorTracker.captureError(error, stackTrace);
             if (isDebugMode) printError(info: error.toString());
-            Get.snackbar("Error", "Unable to store data");
+            Get.snackbar("Error", "Unable to perform login");
           } 
         } else {
           Get.snackbar("Login", "Login Failed, try again later.");

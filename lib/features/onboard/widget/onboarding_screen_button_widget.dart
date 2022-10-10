@@ -12,11 +12,23 @@ class OnBoardingSCreenButtonWidget extends StatelessWidget {
 
   @override
   // ignore: deprecated_member_use
-  Widget build(BuildContext context) => RaisedButton(
+  Widget build(BuildContext context) => ElevatedButton(
         onPressed: onClicked,
-        color: Theme.of(context).primaryColor,
-        shape: const StadiumBorder(),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        style: ButtonStyle(
+          padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>(
+            (Set<MaterialState> states) {
+              return const EdgeInsets.symmetric(horizontal: 20, vertical: 16);
+            },
+          ),
+          backgroundColor:
+              MaterialStateProperty.all(Theme.of(context).primaryColor),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18.0),
+              side: const BorderSide(color: Colors.red),
+            ),
+          ),
+        ),
         child: Text(
           text,
           style: const TextStyle(color: Colors.white, fontSize: 16),

@@ -35,6 +35,14 @@
 flutter pub get
 ```
 
+## Utils
+
+### 1. re-create the splash screen ( with changed image )
+
+```
+flutter pub run flutter_native_splash:create
+```
+
 #### Folder Structure
 
 ```yaml
@@ -64,6 +72,8 @@ lib
 | :---:  | :---:  | :---:  |
 | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771660/github%20images/sahnpmr56y2kshjugnfn.jpg) | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771660/github%20images/xnro9ownte0f7s8p5e8a.jpg) | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771659/github%20images/wuwwp2kqk9wjshkopepp.jpg) 
 | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771659/github%20images/ilel8ixqeuaxnbuyjfp1.jpg) | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771659/github%20images/govpyu70mtvvlro9n6jj.jpg) | ![](https://res.cloudinary.com/swaraj-cloud/image/upload/v1663771659/github%20images/krxzcejj6wg5y7juh4yg.jpg) 
+
+
 
 
 ## 🚀 About Me
