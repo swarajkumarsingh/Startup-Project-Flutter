@@ -46,6 +46,52 @@ void showSnackBar(BuildContext context, String text) {
   );
 }
 
+ progressDialog(BuildContext context, String msg) {
+    return Dialog(
+      child: Container(
+        margin: EdgeInsets.all(15.0),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Row(
+            children: [
+              SizedBox(width: 6.0),
+              CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+              ),
+              SizedBox(width: 10),
+              Text(
+                msg,
+                style: TextStyle(color: Colors.black, fontSize: 11),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+// Use for above code is in bottom-model-sheet
+ // showDialog(
+    //     context: context,
+    //     barrierDismissible: false,
+    //     builder: (BuildContext context) {
+    //           progressDialog(context, "Authenticating, please wait......");
+    //     });
+
+
+ // showDialog(
+    //     context: context,
+    //     barrierDismissible: false,
+    //     builder: (BuildContext context) {
+    //       return Provider.of<LandingHelpers>(context, listen: false)
+    //           .progressDialog(context, "Authenticating, please wait......");
+    //     });
+
 void showErrorDialog(
     {required String heading,
     required String description,
