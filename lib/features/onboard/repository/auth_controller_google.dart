@@ -66,7 +66,7 @@ class AuthControllerGoogle extends GetxController {
             Get.offAll(() => const HomeScreen());
           } catch (error, stackTrace) {
             errorTracker.captureError(error, stackTrace);
-            if (isDebugMode) printError(info: error.toString());
+            if (!isInProduction) printError(info: error.toString());
             Get.snackbar("Error", "Unable to perform login");
           } 
         } else {
@@ -75,7 +75,7 @@ class AuthControllerGoogle extends GetxController {
       }
     } catch (error, stackTrace) {
       errorTracker.captureError(error, stackTrace);
-      if (isDebugMode) printError(info: error.toString());
+      if (!isInProduction) printError(info: error.toString());
       Get.snackbar("Login Failed", "Something went wrong, Try again.");
     } finally {
       isLoading(false);
@@ -91,7 +91,7 @@ class AuthControllerGoogle extends GetxController {
       Get.snackbar("Login", "LogOut Successful");
     } catch (error, stackTrace) {
       errorTracker.captureError(error, stackTrace);
-      if (isDebugMode) printError(info: error.toString());
+      if (!isInProduction) printError(info: error.toString());
       Get.snackbar("Login", "LogOut Failed, Try again");
     } finally {
       isLoading(false);

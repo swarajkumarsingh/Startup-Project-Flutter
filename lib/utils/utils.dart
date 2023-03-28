@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +8,7 @@ import 'package:starter_project_flutter/common/screens/no_net_screen.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:starter_project_flutter/features/home/screens/home_screen.dart';
 import 'package:starter_project_flutter/features/onboard/screen/onboarding_screen.dart';
+import 'package:starter_project_flutter/utils/re_start_app_widget.dart';
 
 checkNet() {
   InternetConnectionChecker().onStatusChange.listen((event) {
@@ -24,18 +27,28 @@ checkUserData() {
   }
 }
 
-checkNetOnClick() async {
+checkNetOnClick(BuildContext context) async {
   bool result = await InternetConnectionChecker().hasConnection;
   if (result == false) {
     Get.snackbar("No Network", "Please check your internet and try again.");
     return;
   } else if (isLoggedIn == true) {
-    Get.offAll(() => const HomeScreen());
+    return checkNetworkAndToPushHomeScreen(context);
   } else if (isLoggedIn == false) {
-    Get.offAll(() => const OnBoardingScreen());
+    return checkNetworkAndPushToOnBoardingScreen(context);
   } else {
-    Get.offAll(() => const OnBoardingScreen());
+    return checkNetworkAndPushToOnBoardingScreen(context);
   }
+}
+
+void checkNetworkAndToPushHomeScreen(BuildContext context) {
+  RestartWidget.restartApp(context);
+  Get.offAll(() => const HomeScreen());
+}
+
+void checkNetworkAndPushToOnBoardingScreen(BuildContext context) {
+  RestartWidget.restartApp(context);
+  Get.offAll(() => const OnBoardingScreen());
 }
 
 void showSnackBar(BuildContext context, String text) {

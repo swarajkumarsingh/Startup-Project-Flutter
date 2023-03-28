@@ -38,7 +38,7 @@ class AuthController extends GetxController with BaseController {
       Get.snackbar("Hi there!", "user logged in successfully");
     } catch (error, stackTrace) {
       errorTracker.captureError(error, stackTrace);
-      if (isDebugMode) printError(info: error.toString());
+      if (!isInProduction) printError(info: error.toString());
       Get.snackbar("Error", "Error Occurred");
     }
   }
@@ -65,7 +65,7 @@ class AuthController extends GetxController with BaseController {
           var apiError = json.decode(error.message!);
           DialogHelper.showErrorDialog(description: apiError["message"]);
         } else {
-          if (isDebugMode) printError(info: error.toString());
+          if (!isInProduction) printError(info: error.toString());
           handleError(error);
         }
       });
@@ -75,7 +75,7 @@ class AuthController extends GetxController with BaseController {
       Get.snackbar("Hi there!", "user logged in successfully");
     } catch (error, stackTrace) {
       errorTracker.captureError(error, stackTrace);
-      if (isDebugMode) printError(info: error.toString());
+      if (!isInProduction) printError(info: error.toString());
       Get.snackbar("Error", "Error Occurred");
     }
   }

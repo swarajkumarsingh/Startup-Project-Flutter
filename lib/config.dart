@@ -4,4 +4,14 @@ class AppConfig {
   static String packageNameIOS = "com.dev.flutter-starterProject";
 }
 
-bool isDebugMode = false;
+// Dynamic Value of isDebugMode
+final bool isInProduction = isDebugModeCustom == false ? false : true;
+bool get isDebugModeCustom {
+  bool value = false;
+  assert(() {
+    value = true;
+    //you can execute debug-specific codes here
+    return true;
+  }());
+  return value;
+}

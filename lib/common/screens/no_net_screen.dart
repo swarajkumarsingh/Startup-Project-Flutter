@@ -48,7 +48,7 @@ class NoInterNetScreen extends StatelessWidget {
               height: 50,
               width: 300,
               child: ElevatedButton(
-                onPressed: () async => await checkNetOnClick(),
+                onPressed: () async => await checkNetOnClick(context),
                 child: const Text(
                   "Reload page",
                   style: TextStyle(

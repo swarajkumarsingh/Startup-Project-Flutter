@@ -8,6 +8,7 @@ import 'package:starter_project_flutter/utils/carousel_slider.dart';
 import 'package:starter_project_flutter/features/search/screens/search_screen.dart';
 import 'package:starter_project_flutter/features/home/widgets/popular_item_grid_builder.dart';
 import 'package:starter_project_flutter/features/onboard/repository/auth_controller_google.dart';
+import 'package:starter_project_flutter/utils/snackbar.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home-screen";
@@ -19,12 +20,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   AuthControllerGoogle controller = Get.put(AuthControllerGoogle());
-
-  @override
-  void initState() {
-    super.initState();
-    // checkUserData();
-  }
 
   @override
   Widget build(BuildContext context) {

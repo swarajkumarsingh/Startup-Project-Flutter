@@ -3,10 +3,11 @@ import 'package:flutter/foundation.dart';
 import 'package:starter_project_flutter/config.dart';
 
 final errorTracker = _ErrorTracker();
+
 class _ErrorTracker {
-   void onFlutterError(FlutterErrorDetails e) {
+  void onFlutterError(FlutterErrorDetails e) {
     captureError(e, e.stack);
-    if (isDebugMode) FlutterError.dumpErrorToConsole(e);
+    if (!isInProduction) FlutterError.dumpErrorToConsole(e);
   }
 
   Future<void> captureError(dynamic error, StackTrace? stackTrace) async {

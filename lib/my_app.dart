@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import 'package:starter_project_flutter/config.dart';
+import 'package:starter_project_flutter/utils/snackbar.dart';
 import 'package:starter_project_flutter/utils/utils.dart';
 import 'package:starter_project_flutter/routes/routes.dart';
 import 'package:starter_project_flutter/constants/variables.dart';
@@ -26,6 +27,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      scaffoldMessengerKey: snackbarKey,
       title: AppConfig.applicationName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

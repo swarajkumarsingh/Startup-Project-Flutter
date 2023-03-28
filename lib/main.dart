@@ -25,38 +25,36 @@ void init() async {
 
     /// * Report Crash Multiple Crashes to FirebaseCrashlytics
     /// * Reference Flutter Error Handling & FirebaseCrashlytics Official Documentation
-    if (isDebugMode == false) {
+    if (isInProduction) {
       FlutterError.onError =
           FirebaseCrashlytics.instance.recordFlutterFatalError;
 
-      
-    /// [Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics]
-    PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-      return true;
-    };
+      /// [Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics]
+      PlatformDispatcher.instance.onError = (error, stack) {
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+        return true;
+      };
 
-    /// [Send error which are not captured by flutter & report to firebase]
-    Isolate.current.addErrorListener(RawReceivePort((pair) async {
-      final List<dynamic> errorAndStacktrace = pair;
-      if (isDebugMode == false) {
-        await FirebaseCrashlytics.instance.recordError(
-          errorAndStacktrace.first,
-          errorAndStacktrace.last,
-          fatal: true,
-        );
-      }
-      if (isDebugMode) Restart.restartApp();
-    }).sendPort);
+      /// [Send error which are not captured by flutter & report to firebase]
+      Isolate.current.addErrorListener(RawReceivePort((pair) async {
+        final List<dynamic> errorAndStacktrace = pair;
+        if (isInProduction) {
+          await FirebaseCrashlytics.instance.recordError(
+            errorAndStacktrace.first,
+            errorAndStacktrace.last,
+            fatal: true,
+          );
+        }
+        if (isInProduction) Restart.restartApp();
+      }).sendPort);
 
-    /// [Re Start App when error occurs.]
-    ErrorWidget.builder = (FlutterErrorDetails details) {
-      FlutterError.presentError(details);
-      Restart.restartApp();
-      return Container();
-    };
+      /// [Re Start App when error occurs.]
+      ErrorWidget.builder = (FlutterErrorDetails details) {
+        FlutterError.presentError(details);
+        Restart.restartApp();
+        return Container();
+      };
     }
-
 
     /// Init GetStorage
     await GetStorage.init();
@@ -68,10 +66,10 @@ void init() async {
       ),
     );
   }, (error, stack) {
-    if (isDebugMode == false) {
+    if (isInProduction) {
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     }
-    if (isDebugMode) Restart.restartApp();
+    if (isInProduction) Restart.restartApp();
   });
 }
 
