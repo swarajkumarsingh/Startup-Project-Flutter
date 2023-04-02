@@ -5,6 +5,7 @@
 
 ## Features
 - [x] Follows the **Features** folder structure.
+- [x] You can navigate (Flutter Navigation) & and use the traditionaly snackbar with the BuildContext thorugh various key.
 - [x] Separate theme folder.
 - [x] Error Handler ( HTTP & DIO ).
 - [x] Working functionality onBoarding Screen.

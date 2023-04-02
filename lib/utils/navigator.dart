@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// () => AppRouter.pushNamed("/home-screen")
 class AppRouter {
   static final navigatorKey = GlobalKey<NavigatorState>();
 
